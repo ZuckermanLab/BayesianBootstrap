@@ -30,7 +30,19 @@ def get_CI(List, Repeat):
         # Confidence Interval is defined by min/max percentiles of sampling means
         return [perc_min, perc_max]
 
+
 def get_CR(List, Repeat):
+    """
+    Compute a credibility region based on Bayesian bootstrapping of the input data.
+
+    :param List: 1-dimensional array-like of input data
+
+    :param Repeat: Number of bootstrap iterations to perform
+
+    :return: (lower CR limit, upper CR limit)
+    """
+
+
     # Test for identical elements by casting as a set.
     #   NO CR if List has only identical elements
     if len(set(List)) == 1:
