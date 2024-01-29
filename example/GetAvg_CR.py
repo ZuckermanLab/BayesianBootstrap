@@ -17,10 +17,11 @@ rates[rates == 0] = min_val
 # get mean array of n replicates at each timepoint
 means = np.average(rates, axis=0)
 # calculate CRs at each timepoint
-CRs = get_CR_multi(rates, 10000)
+CRs = get_CR_multi(rates, 100)
 
 # plotting
 plt.plot(means)
-plt.fill_between([i for i in range(0,rates.shape[1])], means-CRs[:,0], means+CRs[:,1], alpha=0.2)
+plt.fill_between([i for i in range(0,rates.shape[1])], CRs[:,0], CRs[:,1], alpha=0.2)
+plt.plot(np.rot90(rates))
 plt.yscale("log", subs=[2, 3, 4, 5, 6, 7, 8, 9])
 plt.show()
